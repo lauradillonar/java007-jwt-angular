@@ -14,6 +14,10 @@ import { EditarProductoComponent } from './producto/editar-producto/editar-produ
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './auth/login/login.component';
+import { RegistroComponent } from './auth/registro/registro.component';
+import { MenuComponent } from './menu/menu.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { HttpClientModule } from '@angular/common/http';
     ListaProductoComponent,
     DetalleProductoComponent,
     NuevoProductoComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    LoginComponent,
+    RegistroComponent,
+    MenuComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
