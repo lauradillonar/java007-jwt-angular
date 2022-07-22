@@ -42,7 +42,7 @@ export class TokenService {
 
     if(sessionStorage.getItem(AUTHORITIES_KEY)!){
       JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!)
-                .foreach((authority:any) => {
+                .forEach((authority:any) => {
                   this.roles.push(authority.authority);
                 });
     }
