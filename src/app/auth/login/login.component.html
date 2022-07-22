@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="text-center" *ngIf="isLogged; else loggedOut">
   <h2>Ya has iniciado sesión</h2>
 </div>
@@ -39,7 +40,11 @@
               />
             </div>
             <div class="form-group">
-              <button class="btn btn-outline success btn-block">
+              <button
+                class="btn btn-outline success btn-block"
+                [disabled]="!f.valid"
+              >
+                <i class="fas fa-sign-in-alt"></i>
                 Iniciar Sesión
               </button>
             </div>
