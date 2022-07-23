@@ -19,7 +19,7 @@ export class ListaProductoComponent implements OnInit {
   ngOnInit(): void {
     this.cargarProductos();
   }
-  cargarProductos(): void{
+  cargarProductos(): void {
     this.productoService.lista().subscribe(
       data => {
         this.productos = data;
@@ -29,23 +29,24 @@ export class ListaProductoComponent implements OnInit {
       }
     );
   }
-  borrar(id?: number){
-    if (id != undefined){
-    this.productoService.delete(id).subscribe(
-      data => {
-        this.toastr.success('Producto Eliminado','OK', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center'
-        });
-        this.cargarProductos();
-      },
-      err => {
-        this.toastr.error(err.error.mensaje,'Fail', {
-          timeOut: 3000,
-          positionClass: 'toast-top-center'
-        });
-      }
-    );
+  borrar(id?: number) {
+    if (id != undefined) {
+      this.productoService.delete(id).subscribe(
+        data => {
+          this.toastr.success('Producto Eliminado', 'OK', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center'
+          });
+          this.cargarProductos();
+        },
+        err => {
+          console.log(err);
+          this.toastr.error(err.error.message, 'Fail', {
+            timeOut: 3000,
+            positionClass: 'toast-top-center'
+          });
+        }
+      );
     }
   }
 }

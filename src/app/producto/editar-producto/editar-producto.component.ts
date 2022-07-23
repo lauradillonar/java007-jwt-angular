@@ -27,11 +27,12 @@ export class EditarProductoComponent implements OnInit {
         this.producto = data;
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        console.log(err);
+        this.toastr.error(err.error.message, 'Fail', {
           timeOut: 3000,
           positionClass: 'toast-top-center'
         });
-        this.router.navigate(['/']);
+        this.router.navigate(['/lista']);
       }
     );
   }
@@ -44,14 +45,15 @@ export class EditarProductoComponent implements OnInit {
           timeOut: 3000,
           positionClass: 'toast-top-center'
         });
-        this.router.navigate(['/']);
+        this.router.navigate(['/lista']);
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        console.log(err);
+        this.toastr.error(err.error.message, 'Fail', {
           timeOut: 3000,
           positionClass: 'toast-top-center'
         });
-        this.router.navigate(['/']);
+        this.router.navigate(['/lista']);
       }
     );
   }
