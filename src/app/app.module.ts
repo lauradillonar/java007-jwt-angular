@@ -1,3 +1,4 @@
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -39,7 +40,7 @@ import { IndexComponent } from './index/index.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
