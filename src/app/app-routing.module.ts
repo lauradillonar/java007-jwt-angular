@@ -1,3 +1,4 @@
+import { ProdGuardService as guard} from './guards/prod-guard.service';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
 import { IndexComponent } from './index/index.component';
@@ -12,10 +13,18 @@ const routes: Routes = [
   {path: '', component: IndexComponent},
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
-  {path: 'lista', component: ListaProductoComponent},
-  {path: 'detalle/:id', component: DetalleProductoComponent},
-  {path: 'nuevo', component: NuevoProductoComponent},
-  {path: 'editar/:id', component: EditarProductoComponent},
+  {path: 'lista', component: ListaProductoComponent, canActivate: [guard], data: {
+    expectedRol: ['admin', 'user']
+  }},
+  {path: 'detalle/:id', component: DetalleProductoComponent, canActivate: [guard], data: {
+    expectedRol: ['admin', 'user']
+  }},
+  {path: 'nuevo', component: NuevoProductoComponent, canActivate: [guard], data: {
+    expectedRol: ['admin']
+  }},
+  {path: 'editar/:id', component: EditarProductoComponent, canActivate: [guard], data: {
+    expectedRol: ['admin']
+  }},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

@@ -27,7 +27,8 @@ export class DetalleProductoComponent implements OnInit {
         this.producto = data;
       },
       err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
+        console.log(err);
+        this.toastr.error(err.error.message, 'Fail', {
           timeOut: 3000,
           positionClass: 'toast-top-center'
         });
@@ -36,7 +37,7 @@ export class DetalleProductoComponent implements OnInit {
     );
   }
 
-  volver(){
-    this.router.navigate(['/']);
+  volver(){ 
+    this.router.navigate(['/lista']);
   }
 }

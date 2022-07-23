@@ -1,3 +1,4 @@
+import { TokenService } from './../../service/token.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProductoService } from './../../service/producto.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,13 +12,23 @@ import { Producto } from 'src/app/models/producto';
 export class ListaProductoComponent implements OnInit {
 
   productos: Producto[] = [];
+  roles!: string[];
+  isAdmin = false; 
+
   constructor(
     private productoService: ProductoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
     this.cargarProductos();
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
   cargarProductos(): void {
     this.productoService.lista().subscribe(
