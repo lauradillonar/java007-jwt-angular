@@ -20,6 +20,7 @@ export class RegistroComponent implements OnInit {
   errMsj: string = '';
   isLogged = false;
 
+
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
@@ -41,6 +42,7 @@ export class RegistroComponent implements OnInit {
                               this.password);
     this.authService.nuevo(this.nuevoUsuario).subscribe(
       data => {
+
         this.toastr.success('Cuenta Creada', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
@@ -52,7 +54,7 @@ export class RegistroComponent implements OnInit {
         this.toastr.error(this.errMsj, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
-        // console.log(err.error.message);
+        console.log(err);
       }
     );
   }
