@@ -1,4 +1,5 @@
-import { ProdGuardService as guard} from './guards/prod-guard.service';
+import { LoginGuard } from './guards/login.guard';
+import { ProdGuardService } from './guards/prod-guard.service';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
 import { IndexComponent } from './index/index.component';
@@ -11,18 +12,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: '', component: IndexComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'registro', component: RegistroComponent},
-  {path: 'lista', component: ListaProductoComponent, canActivate: [guard], data: {
+  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+  {path: 'registro', component: RegistroComponent, canActivate: [LoginGuard]},
+  {path: 'lista', component: ListaProductoComponent, canActivate: [ProdGuardService], data: {
     expectedRol: ['admin', 'user']
   }},
-  {path: 'detalle/:id', component: DetalleProductoComponent, canActivate: [guard], data: {
+  {path: 'detalle/:id', component: DetalleProductoComponent, canActivate: [ProdGuardService], data: {
     expectedRol: ['admin', 'user']
   }},
-  {path: 'nuevo', component: NuevoProductoComponent, canActivate: [guard], data: {
+  {path: 'nuevo', component: NuevoProductoComponent, canActivate: [ProdGuardService], data: {
     expectedRol: ['admin']
   }},
-  {path: 'editar/:id', component: EditarProductoComponent, canActivate: [guard], data: {
+  {path: 'editar/:id', component: EditarProductoComponent, canActivate: [ProdGuardService], data: {
     expectedRol: ['admin']
   }},
   {path: '**', redirectTo: '', pathMatch: 'full'}

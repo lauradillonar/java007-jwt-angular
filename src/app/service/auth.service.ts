@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { LoginUsuario } from './../models/login-usuario';
 import { Observable } from 'rxjs';
 import { NuevoUsuario } from './../models/nuevo-usuario';
@@ -10,7 +11,7 @@ import { JwtDTO } from '../models/jwt-dto';
 })
 export class AuthService {
 
-  authURL = 'http://localhost:8080/auth/';
+  authURL = environment.authURL;
 
   constructor(private httpClient: HttpClient) { }
 
